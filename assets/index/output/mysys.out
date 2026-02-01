@@ -1,0 +1,11 @@
+Julia Version 1.10.10
+Commit 95f30e51f41 (2025-06-27 09:51 UTC)
+Build Info:
+  Official https://julialang.org/ release
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: 4 × Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-15.0.7 (ORCJIT, skylake)
+Threads: 1 default, 0 interactive, 1 GC (on 4 virtual cores)

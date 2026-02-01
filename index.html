@@ -25,6 +25,8 @@
 <ul>
 <li><p>i&#39;m using julia from a terminal and - for me - vscode is only for editing &#40;too old to rock&#39;n roll&#41;, so here i&#39;m deviating from doggo&#39;s workflow</p>
 </li>
+<li><p>the following approach is discussed <a href="https://github.com/orgs/community/discussions/63631">here</a></p>
+</li>
 <li><p>create a <code>yourusername.github.io</code> repo on github and prepare for work on it locally</p>
 </li>
 <li><p>start julia in the local <code>yourusername.github.io</code> directory</p>
@@ -52,6 +54,10 @@
 <li><p><code>@def author&#61;...</code></p>
 </li>
 <li><p><code>@def prepath&#61;...</code> &#40;it is &quot;mysite1&quot; here&#41;</p>
+<ul>
+<li><p>it can be set as a parameter to <code>publish</code></p>
+</li>
+</ul>
 </li>
 <li><p>TOML syntax can be used within <code>&#43;&#43;&#43; &#43;&#43;&#43;</code></p>
 </li>
@@ -65,7 +71,7 @@
 <ul>
 <li><p>no official Github Desktop on linux &#40;there are some builds, however&#41;</p>
 </li>
-<li><p>my approach is: set up two repos on GitHub, one for the development and one for the <code>__site</code> folder</p>
+<li><p>the approach used here is described in the <code>Set up</code> part</p>
 </li>
 </ul>
 <h1 id="examples"><a href="#examples" class="header-anchor">Examples</a></h1>
@@ -74,8 +80,6 @@
 <p>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;</p>
 <h2 id="how_to_render_math_equations"><a href="#how_to_render_math_equations" class="header-anchor">How to render math equations</a></h2>
 <ul>
-<li><p>on github currently does not work...</p>
-</li>
 <li><p>this inline &#40;enclosed by dollar-signs&#41; math: for some triangles <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>=</mo><msup><mi>c</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">a^2 + b^2 = c^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></p>
 </li>
 <li><p>and this is display &#40;enclosed by double-dollar-signs&#41;:</p>
@@ -107,6 +111,61 @@ A^{T}A \text{ is a } m\times m \text{ non-negative definite matrix }\\
   padding-right: 5px;
 &#125;</code></pre>
 <h2 id="how_to_insert_julia_code_with_outputs"><a href="#how_to_insert_julia_code_with_outputs" class="header-anchor">How to insert julia code &#40;with outputs&#33;&#41;</a></h2>
+<ul>
+<li><p>this command will be executed:</p>
+</li>
+</ul>
+<pre><code class="language-julia">println&#40;&quot;hello world&#33;&quot;&#41;</code></pre>
+<ul>
+<li><p>and this is the result:</p>
+</li>
+</ul>
+<pre><code class="plaintext code-output">hello world!
+</code></pre>
+<ul>
+<li><p>a slightly more time consuming &#40;but silly&#41; example:</p>
+</li>
+</ul>
+<pre><code class="language-julia">function fib&#40;n&#41;
+   n&lt;2 &amp;&amp; &#40;return n&#41;
+   return fib&#40;n-2&#41;&#43;fib&#40;n-1&#41;
+end
+
+for n in 37:42
+   t&#61;time&#40;&#41;
+   fn&#61;fib&#40;n&#41;
+   t&#61;round&#40;time&#40;&#41;-t, digits&#61;3&#41;
+   println&#40;&quot;the &#36;&#40;n&#41;. Fibonacci is &#36;&#40;fn&#41;, computed in &#36;&#40;t&#41;sec&quot;&#41;
+end</code></pre>
+<pre><code class="plaintext code-output">the 37. Fibonacci is 24157817, computed in 0.164sec
+the 38. Fibonacci is 39088169, computed in 0.273sec
+the 39. Fibonacci is 63245986, computed in 0.47sec
+the 40. Fibonacci is 102334155, computed in 0.729sec
+the 41. Fibonacci is 165580141, computed in 1.132sec
+the 42. Fibonacci is 267914296, computed in 1.793sec
+</code></pre>
+<ul>
+<li><p>if the script is untouched the previous result will be used &#40;reported&#41;, which is good seeing the growing running times...</p>
+</li>
+</ul>
+<ul>
+<li><p>another example about my machine:</p>
+</li>
+</ul>
+<pre><code class="language-julia">using InteractiveUtils
+versioninfo&#40;&#41;</code></pre>
+<pre><code class="plaintext code-output">Julia Version 1.10.10
+Commit 95f30e51f41 (2025-06-27 09:51 UTC)
+Build Info:
+  Official https://julialang.org/ release
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: 4 × Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-15.0.7 (ORCJIT, skylake)
+Threads: 1 default, 0 interactive, 1 GC (on 4 virtual cores)
+</code></pre>
 <h2 id="how_to_insert_a_table_from_a_csv_file"><a href="#how_to_insert_a_table_from_a_csv_file" class="header-anchor">How to insert a table from a CSV file</a></h2>
 <h2 id="how_to_insert_an_image_file"><a href="#how_to_insert_an_image_file" class="header-anchor">How to insert an image file</a></h2>
 <h2 id="how_to_insert_clickable_thumbnail_to_a_youtube_video"><a href="#how_to_insert_clickable_thumbnail_to_a_youtube_video" class="header-anchor">How to insert clickable thumbnail to a Youtube video</a></h2>
