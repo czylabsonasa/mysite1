@@ -45,6 +45,10 @@
 <li><p>the actual site is inside the <code>franklintro/__site</code> directory, which is gitignored by default. It means, that you can create a repo named <code>mysite</code> on github with the content of this <code>__site</code> dir, and u can activate the github-pages on it...</p>
 </li>
 <li><p>issue <code>optimize&#40;;prepath&#61;&quot;franklintro&quot;,minify&#61;false&#41;</code>, push it and browse <code>username.github.io/franklintro</code></p>
+<ul>
+<li><p>do not use <code>clear&#61;true</code> in optimize bcos. ur <code>.git</code> dir will gone ⌣</p>
+</li>
+</ul>
 </li>
 </ul>
 <h2 id="update_title"><a href="#update_title" class="header-anchor">Update title</a></h2>
@@ -140,12 +144,12 @@ for n in 37:42
    t&#61;round&#40;time&#40;&#41;-t, digits&#61;3&#41;
    println&#40;&quot;the &#36;&#40;n&#41;. Fibonacci is &#36;&#40;fn&#41;, computed in &#36;&#40;t&#41;sec&quot;&#41;
 end</code></pre>
-<pre><code class="plaintext code-output">the 37. Fibonacci is 24157817, computed in 0.166sec
-the 38. Fibonacci is 39088169, computed in 0.267sec
-the 39. Fibonacci is 63245986, computed in 0.435sec
-the 40. Fibonacci is 102334155, computed in 0.699sec
-the 41. Fibonacci is 165580141, computed in 1.137sec
-the 42. Fibonacci is 267914296, computed in 1.83sec
+<pre><code class="plaintext code-output">the 37. Fibonacci is 24157817, computed in 0.174sec
+the 38. Fibonacci is 39088169, computed in 0.274sec
+the 39. Fibonacci is 63245986, computed in 0.45sec
+the 40. Fibonacci is 102334155, computed in 0.722sec
+the 41. Fibonacci is 165580141, computed in 1.18sec
+the 42. Fibonacci is 267914296, computed in 1.915sec
 </code></pre>
 <ul>
 <li><p>if the script is untouched the previous result will be used &#40;reported&#41;, which is good seeing the growing running times...</p>
